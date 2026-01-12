@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- mobile specific metas -->
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Script-Type" content="text/javascript">
+    <meta http-equiv="Content-Style-Type" content="text/css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="format-detection" content="telephone=no">
+
+    <!-- web font -->
+    <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
+
+    <!-- IE compatibility mode -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- content overview -->
+    <title>CoinVillage-V6</title>
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="./images/favicon/apple_icon_180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="./include/img/favicon/android_icon_192x192.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="./include/img/favicon/favicon_96x96.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./include/img/favicon/favicon_32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./include/img/favicon/favicon_16x16.png">
+
+    <!-- css -->
+    <link href="./include/css/reset.css" rel="stylesheet" type="text/css" />
+    <link href="./include/css/main.css" rel="stylesheet" type="text/css" />
+    
+    <!-- javascript & jquery -->
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script> -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.14.3/xlsx.full.min.js"></script>
+    <script type="text/javascript" src="/eel.js"></script>
+    <script type="text/javascript" src="./include/js/main.js"></script>
+    
+</head>
+
+<body>
+    <div class="master_wrap">
+        <!-- 해더 -->
+        <div class="header_wrap">
+            <!-- <h1>
+            <img src="include/img/logo/logo.jpg" alt="logo"/>
+        </h1> -->
+        </div>
+        <div class="body_wrap">
+            <!-- 타이틀 -->
+            <div class="main_title">
+                <div class="title_wrap">
+                    <h3>CoinVillage-V6</h3>
+                    <p>가상자산 통합 거래 지원 플랫폼</p>
+                </div>
+                <div class="image_wrap">
+                    <img src="include/img/main_visual.png" />
+                </div>
+            </div>
+            <div class="content_box">
+                <div class="content_box">
+                    <span class="sub_title">서비스 목록</span>
+                    <div class="guide">등록된 백그라운드 서비스 현황입니다.</div>
+                    <button id="btnRefresh" class="refresh_btn">
+                        ⟳ 새로고침
+                    </button>
+                    <div id="serviceList" class="service_list">
+                        <!-- JS로 동적 생성 -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- 제출 -->
+            <!-- <div class="submit_wrap">
+                <button id="submit" type="button">제출</button>
+            </div> -->
+        </div>
+    </div>
+</body>
+</html>

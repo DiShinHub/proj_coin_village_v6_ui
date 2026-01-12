@@ -1,0 +1,257 @@
+﻿/* 공통 */
+.content_box { position:relative; padding:20px 20px 32px; border-radius:10px; box-shadow:inset 0 0 0 1px #04060814; background:#fff; }
+.content_box + .content_box { margin-top:20px; }
+.content_box .sub_title { display:block; font-size:20px; font-weight:800; }
+.content_box .sub_title + .guide { margin-top:16px; }
+
+/* 해더 */
+.header_wrap{ display:flex; align-items:center; justify-content:center; position:fixed; top:0; left:0; right:0; height:64px; box-shadow:0 0 8px #04060833; background:#fff; z-index:999; }
+.header_wrap h1 { height:22px; }
+.header_wrap h1 img { width:auto; height:100%; }
+
+/* 바디 */
+.master_wrap { background:#f4f6f8; }
+.body_wrap { max-width:1320px; margin:0 auto; padding:64px 20px 40px; }
+
+/* 타이틀 */
+.main_title { display:flex; align-items:center; padding:32px 0; }
+.main_title .title_wrap { flex:0 0 67.5%; }
+.main_title .title_wrap h3 { margin-bottom:8px; font-size:26px; font-weight:900; line-height:1.2; }
+.main_title .title_wrap p { font-size:15px; color:#848688; }
+.main_title .image_wrap { width:100%; text-align:right; }
+.main_title .image_wrap img { display:inline-block; max-width:140px; }
+
+/* 콘텐츠 타이틀 */
+.content_title { margin-bottom:16px; }
+
+/* 제출 */
+.submit_wrap { margin-top:20px; }
+.submit_wrap button { width:100%; height:48px; border-radius:10px; background:#e10202; font-size:15px; font-weight:600; color:#fff; }
+
+/* 이어하기 */
+.submit_continue_wrap { margin-top:20px; }
+.submit_continue_wrap button { width:100%; height:48px; border-radius:10px; background:#949698; font-size:15px; font-weight:600; color:#fff; }
+
+/* 서비스 리스트 */
+.service_list {
+    margin-top:20px;
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(320px, 1fr));
+    gap:16px;
+}
+
+/* 카드 */
+.service_card {
+    padding:16px;
+    border-radius:12px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.06);
+    background:#fff;
+    border:1px solid #e5e7eb;
+    transition:transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.service_card:hover {
+    transform:translateY(-3px);
+    box-shadow:0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* 카드 헤더 */
+.service_card .card_header {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:12px;
+}
+
+.service_card .product_name {
+    font-size:18px;
+    font-weight:800;
+}
+
+/* 상태 뱃지 */
+.badge {
+    padding:4px 10px;
+    border-radius:999px;
+    font-size:12px;
+    font-weight:700;
+}
+
+.badge.on {
+    background:#e6f9ef;
+    color:#0f9d58;
+}
+
+.badge.off {
+    background:#fdeaea;
+    color:#e10202;
+}
+
+/* 클릭 가능한 상태 뱃지 */
+.toggle_badge {
+    cursor:pointer;
+    user-select:none;
+    transition:transform 0.1s ease, opacity 0.2s ease;
+}
+
+.toggle_badge:hover {
+    opacity:0.85;
+}
+
+.toggle_badge:active {
+    transform:scale(0.95);
+}
+
+
+/* 카드 내용 */
+.card_body {
+    font-size:13px;
+    line-height:1.6;
+    color:#444;
+}
+
+.card_body .row {
+    display:flex;
+}
+
+.card_body .label {
+    width:110px;
+    font-weight:700;
+    color:#666;
+}
+
+.card_body .value {
+    flex:1;
+    word-break:break-all;
+}
+
+/* 실행 경로 */
+.execution_path {
+    margin-top:10px;
+    padding:8px;
+    background:#f4f6f8;
+    border-radius:8px;
+    font-size:12px;
+    font-family:monospace;
+}
+
+/* 리프레시 버튼 */
+.refresh_btn {
+    height:36px;
+    padding:0 14px;
+    border-radius:8px;
+    background:#f4f6f8;
+    border:1px solid #d1d5db;
+    font-size:13px;
+    font-weight:700;
+    color:#333;
+    cursor:pointer;
+    transition:background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.refresh_btn:hover {
+    background:#e5e7eb;
+    box-shadow:0 2px 6px rgba(0,0,0,0.1);
+}
+
+.refresh_btn:active {
+    transform:translateY(1px);
+}
+
+/* 옵션 토글 라벨 */
+.options-toggle {
+    cursor: pointer;
+    font-weight: 600;
+    user-select: none;
+}
+
+.option-item + .option-item {
+    margin-top: 12px;
+}
+
+.option-title {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #444;
+}
+
+/* 옵션 바디는 기본 접힘 */
+.options-body {
+    display: none;
+    margin-top: 8px;
+    max-height: 320px;
+    overflow-y: auto;
+}
+
+
+.action-row {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 12px;
+}
+
+.option-edit-btn {
+    padding: 7px 16px;
+    border-radius: 6px;
+    border: 1px solid #d0d7de;
+    background: linear-gradient(180deg, #ffffff, #f3f4f6);
+    color: #333;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+}
+
+.option-edit-btn:hover {
+    background: linear-gradient(180deg, #f9fafb, #e5e7eb);
+    border-color: #b6c2cf;
+}
+
+.option-edit-btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 0 0 rgba(0,0,0,0);
+}
+.service_card.editing .option-edit-btn {
+    background: linear-gradient(180deg, #4f8cff, #2f6fe4);
+    border-color: #2f6fe4;
+    color: #fff;
+}
+
+.service_card.editing .option-edit-btn:hover {
+    background: linear-gradient(180deg, #5a95ff, #3a7af0);
+}
+
+
+/* 핵심 */
+.json-textarea {
+    width: 100%;
+    min-height: 140px;
+    max-height: 300px;
+    resize: vertical;
+    font-family: Consolas, Monaco, monospace;
+    font-size: 12px;
+    line-height: 1.5;
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1px solid #d1d5db;
+    background: #fafafa;
+    box-sizing: border-box;
+    white-space: pre;
+    overflow: auto;
+}
+
+
+/* 카드 보호 */
+.service_card {
+    overflow: hidden;
+}
+
+.execute-type-select {
+    width: 50%;
+    height: 18px;
+    min-height: 18px;
+    line-height: normal;   /* ← 이게 먹히는 경우도 있음 */
+    padding-top: 0;
+    padding-bottom: 0;
+}

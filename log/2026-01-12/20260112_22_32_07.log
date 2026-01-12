@@ -1,0 +1,7 @@
+2026-01-12 22:32:07,844 - geventwebsocket.handler - INFO - 127.0.0.1 - - [2026-01-12 22:32:07] "GET /main.html HTTP/1.1" 200 3953 0.001026
+2026-01-12 22:32:07,860 - geventwebsocket.handler - INFO - 127.0.0.1 - - [2026-01-12 22:32:07] "GET /include/css/reset.css HTTP/1.1" 200 16024 0.003001
+2026-01-12 22:32:07,863 - geventwebsocket.handler - INFO - 127.0.0.1 - - [2026-01-12 22:32:07] "GET /include/css/main.css HTTP/1.1" 200 6083 0.001998
+2026-01-12 22:32:07,865 - geventwebsocket.handler - INFO - 127.0.0.1 - - [2026-01-12 22:32:07] "GET /eel.js HTTP/1.1" 200 6022 0.000000
+2026-01-12 22:32:07,867 - geventwebsocket.handler - INFO - 127.0.0.1 - - [2026-01-12 22:32:07] "GET /include/js/main.js HTTP/1.1" 200 8984 0.001001
+2026-01-12 22:32:07,871 - geventwebsocket.handler - INFO - 127.0.0.1 - - [2026-01-12 22:32:07] "GET /include/img/main_visual.png HTTP/1.1" 200 82182 0.002004
+2026-01-12 22:32:08,035 - geventwebsocket.handler - INFO - 127.0.0.1 - - [2026-01-12 22:32:08] "GET /include/img/favicon/android_icon_192x192.png HTTP/1.1" 200 4009 0.001003
