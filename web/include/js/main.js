@@ -40,7 +40,14 @@ $(function () {
 
         updateBadgeUI($badge, nextActive);
         toggleActivityRunnableService(seq, nextActive);
-        loadRunnableService();
+
+         
+        // const $card = $badge.closest(".service_card");
+        // const executionMethod = $card.find(".execute-type-select").val();
+        
+        setTimeout(() => {
+            loadRunnableService();
+        }, 1500);
     });
 
     // 옵션 토글
@@ -191,19 +198,13 @@ function createCard(item) {
                         class="execute-type-select"
                         data-seq="${item.seq}">
                         <option value="run" ${item.execution_method === "run" ? "selected" : ""}>Run</option>
-                        <option value="schedule" ${item.execution_method === "schedule" ? "selected" : ""}>Schedule</option>
                         <option value="interval" ${item.execution_method === "interval" ? "selected" : ""}>Interval</option>
+                        <option value="schedule" ${item.execution_method === "schedule" ? "selected" : ""}>Schedule</option>
+                        <option value="socket" ${item.execution_method === "socket" ? "selected" : ""}>Socket</option>
                     </select>
                 </div>
             </div>
-            <div class="row"> 
-                <div class="label">Execute Path</div>
-            </div>
-            <div class="execution_path"> 
-                <div>
-                ${item.execution_path}
-                </div>
-            </div>
+
             <!-- OPTIONS TOGGLE -->
             <div class="row options-row">
                 <div class="label options-toggle">Options ▼</div>
