@@ -1,4 +1,4 @@
-/* 리퀘스트/리스폰스 핸들러*/
+/* 리스폰스 핸들러*/
 eel.expose(passage_js);
 function passage_js(x) {
     try {
@@ -24,6 +24,7 @@ function passage_js(x) {
         }
         else if(x.request.service_div == "04"){
             renderContentCvHeatmaps(x);
+            
         }
         else if(x.request.service_div == "05"){
             if (x.response.result == true){
@@ -53,21 +54,3 @@ function passage_js(x) {
         return false
     }
 };
-
-/* 기본 랜더링 */
-$(function () {
-
-    // -- 초기 로딩
-    loadPage("cv_services", "0");
-
-    // -- 페이징
-    let page = null;
-    let value = null;
-    $(document).on("click", ".nav_btn", function () {
-        page = $(this).data("page");
-        value = $(this).data("value");
-        loadPage(page, value);
-        
-        PageState.setPage(value);
-    });
-});

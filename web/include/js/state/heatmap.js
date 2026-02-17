@@ -10,9 +10,22 @@ window.HeatmapState = {
         this.totalCnt = cnt;
         this.idx = 0;
         this.viewers = viewers || [];
-        this.heatmapSliding = null;
-        this.heatmapSlidingSec = null;
+        // this.heatmapSliding = null;
+        // this.heatmapSlidingSec = null;
         this.updateCntUI();
+        this.stopHeatmapSliding();
+    },
+    load(){
+        loadHeatmapViewerService();
+    },
+    clear(){
+        this.stopHeatmapSliding();
+
+        this.totalCnt = 0
+        this.idx = 0
+        this.viewers = []
+        this.heatmapSliding = null
+        this.heatmapSlidingSec = null
     },
     next() {
         this.idx = (this.idx + 1) % this.totalCnt;
@@ -25,12 +38,18 @@ window.HeatmapState = {
     render() {
         const viewer = this.viewers[this.idx];
         if (!viewer) return;
-    
-        const container = document.querySelector("#heatmapContainer");
-        container.innerHTML = "";
-        
-        renderHeatmapContent(viewer);
-        this.updateCntUI();
+
+        const $container = $("#heatmapContainer");
+
+        // 애니메이션 중이면 무시 (연타 방지)
+        if ($container.is(":animated")) return;
+
+        $container.fadeOut(120, () => {
+            $container.empty();
+            renderHeatmapContent(viewer);
+            this.updateCntUI();
+            $container.fadeIn(180);
+        });
     },
     updateCntUI() {
         $("#heatmapCurrentIdx").text(this.idx + 1);
@@ -47,6 +66,7 @@ window.HeatmapState = {
         if (this.heatmapSliding) {
             clearInterval(this.heatmapSliding);
             this.heatmapSliding = null;
+            this.heatmapSlidingSec = null;
         }
     }
 };
