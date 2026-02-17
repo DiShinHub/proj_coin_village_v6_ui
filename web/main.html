@@ -41,47 +41,79 @@
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.14.3/xlsx.full.min.js"></script>
     <script type="text/javascript" src="/eel.js"></script>
-    <script type="text/javascript" src="./include/js/main.js"></script>
+    <!-- <script type="text/javascript" src="./include/js/service_common.js"></script>
+    <script type="text/javascript" src="./include/js/service_list.js"></script> -->
     
+    <script type="text/javascript" src="./include/js/heatmapState.js"></script>
+    <script type="text/javascript" src="./include/js/function.js"></script>
+    <script type="text/javascript" src="./include/js/event.js"></script>
+    <script type="text/javascript" src="./include/js/main.js"></script>
 </head>
 
 <body>
     <div class="master_wrap">
         <!-- 해더 -->
         <div class="header_wrap">
-            <!-- <h1>
-            <img src="include/img/logo/logo.jpg" alt="logo"/>
-        </h1> -->
-        </div>
-        <div class="body_wrap">
             <!-- 타이틀 -->
             <div class="main_title">
                 <div class="title_wrap">
                     <h3>CoinVillage-V6</h3>
                     <p>가상자산 통합 거래 지원 플랫폼</p>
                 </div>
-                <div class="image_wrap">
-                    <img src="include/img/main_visual.png" />
-                </div>
-            </div>
-            <div class="content_box">
-                <div class="content_box">
-                    <span class="sub_title">서비스 목록</span>
-                    <div class="guide">등록된 백그라운드 서비스 현황입니다.</div>
-                    <button id="btnRefresh" class="refresh_btn">
-                        ⟳ 새로고침
-                    </button>
-                    <div id="serviceList" class="service_list">
-                        <!-- JS로 동적 생성 -->
-                    </div>
-                </div>
             </div>
 
-            <!-- 제출 -->
-            <!-- <div class="submit_wrap">
-                <button id="submit" type="button">제출</button>
+            <!-- 메뉴 버튼 -->
+            <div class="nav_wrap">
+                <button class="nav_btn" data-page="cv_services" data-value="0">컨트롤 보드</button>
+                <button class="nav_btn" data-page="cv_heatmaps" data-value="1">히트맵 보드</button>
+            </div>
+            <!-- <div class="image_wrap">
+                <img src="include/img/main_visual.png" />
             </div> -->
+        </div>
+        <div class="body_wrap">
+
+            <!-- 콘텐츠 영역 -->
+            <div id="contentArea">
+            </div>
         </div>
     </div>
 </body>
+<!-- 히트맵 추가 팝업 -->
+<div id="heatmapAddModal" class="modal-overlay" style="display:none;">
+    <div class="modal-box">
+        <div class="modal-header">
+            <h3>히트맵 추가</h3>
+            <button class="modal-close" id="btnCloseHeatmapModal">✕</button>
+        </div>
+
+        <div class="modal-body">
+            <div class="modal-field">
+                <label>타이틀</label>
+                <input type="text" id="heatmapTitle" placeholder="히트맵 이름" />
+            </div>
+
+            <div class="modal-field">
+                <label>디스크립션</label>
+                <textarea id="heatmapDesc" placeholder="설명"></textarea>
+            </div>
+
+            <div class="modal-field">
+                <label>분할 방식</label>
+                <select id="heatmapSplit">
+                    <option value="1">1</option>
+                    <option value="4">4</option>
+                    <option value="6">6</option>
+                    <option value="8">8</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button id="btnSaveHeatmap" class="submit_btn">
+                💾 저장
+            </button>
+        </div>
+    </div>
+</div>
 </html>

@@ -1,0 +1,55 @@
+
+<div class="content_box">
+    <div class="content_box">
+        <div>
+            <button id="btnRefreshCvHeatmaps" class="refresh_btn">
+                새로고침
+            </button>
+            <button id="btnAddHeatmap" class="add_btn">
+                히트맵 추가
+            </button>
+            <button id="btnDelHeatmap" class="del_btn">
+                히트맵 삭제
+            </button>
+            <button
+                type="button"
+                id="btnToggleHeatmapUrl"
+                class="toggle_btn"
+            >
+                URL 입력 숨기기
+            </button>
+            <button
+                type="button"
+                id="btnUpdateHeatmapUrl"
+                class="add_btn"
+            >
+                URL 업데이트
+            </button>
+            <!-- 이전 -->
+            <button
+                type="button"
+                class="slider-btn left"
+                id="btnHeatmapPrev"
+            >
+                ◀
+            </button>
+
+            <!-- 다음 -->
+            <button
+                type="button"
+                class="slider-btn right"
+                id="btnHeatmapNext"
+            >
+                ▶
+            </button>
+
+            <!-- 페이지 표시 -->
+            <span id="heatmapCurrentIdx">0</span>
+            /
+            <span id="heatmapMaxIdx">0</span>
+        </div>
+
+        <!-- 히트맵 영역 -->
+        <div id="heatmapContainer" class="heatmapContainer"></div>
+        </div>
+</div>

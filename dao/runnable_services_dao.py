@@ -35,6 +35,32 @@ class runnableServicesDao():
         """
         return self.postgres.read_all(query) 
     
+    def create_runnable_services(self, params):
+        
+        # base query
+        query = f"""
+            INSERT INTO runnable_services 
+                (execution_path, execution_class, execution_method, service_options, product_name, product_desc, reg_dt, reg_member_seq, mod_dt, mod_member_seq, activate_yn, delete_yn, interval_options, schedule_options)
+            VALUES(
+                '', 
+                '', 
+                '{params['execution_method']}', 
+                '{params['service_options']}', 
+                '{params['product_name']}', 
+                '{params['product_desc']}', 
+                now(), 0, 
+                now(), 0, 
+                'N', 
+                'N', 
+                '{params['interval_options']}', 
+                '{params['schedule_options']}'
+            );
+        """
+        
+        # execute
+        res = self.postgres.execute_query_with_commit(query)
+        return res
+    
     def update_runnable_services(self, params, seq):
         
         # base query

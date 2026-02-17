@@ -47,7 +47,10 @@ html {
   -webkit-text-size-adjust:100%; /* 2 */
   -ms-text-size-adjust:100%;
   color:#141618;
+  overflow-y: scroll;
 }
+
+
 /*
 1. Remove the margin in all browsers.
 2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.

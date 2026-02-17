@@ -30,7 +30,7 @@ class CoinVillageService():
             }
         }
     
-    def toggle_runnable_services_activation(self, request):
+    def onoff_runnable_services(self, request):
         
         params = {
             "activate_yn" : request["activate_yn"]
@@ -47,7 +47,40 @@ class CoinVillageService():
             }
         }
     
-    def update_runnable_services_options(self, request):
+    def create_runnable_services(self, request):
+
+        params = {}
+        if request.get("execution_method"):
+            params["execution_method"] = request.get("execution_method")
+            
+        if request.get("service_options"):
+            params["service_options"] = request.get("service_options")
+            
+        if request.get("product_name"):
+            params["product_name"] = request.get("product_name")
+            
+        if request.get("product_desc"):
+            params["product_desc"] = request.get("product_desc")
+            
+        if request.get("interval_options"):
+            params["interval_options"] = request.get("interval_options")
+            
+        if request.get("schedule_options"):
+            params["schedule_options"] = request.get("schedule_options")
+        
+        self.runnable_services_dao.create_runnable_services(params)
+
+        return {
+            "request" : request,
+            "response" : {
+                "result" : True,
+                "msg" : "",
+                "data" : {
+                }
+            }
+        }
+        
+    def update_runnable_services(self, request):
         
         params = {}
         if request.get("execution_method"):
