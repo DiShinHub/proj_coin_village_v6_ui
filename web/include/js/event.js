@@ -142,12 +142,58 @@ $(function () {
         loadHeatmapViewerService();
     });
 
-    // 이전
+    // 이전 버튼
     $(document).on("click", "#btnHeatmapPrev", function () {
         HeatmapState.prev();
     });
 
-    // 다음
+    // 오토 슬라이더 
+    $(document).on("click", "#btnHeatmapSlider", function () {
+
+        if (HeatmapState.heatmapSlidingSec == null){
+            $("#btnHeatmapSlider").text("5")
+            HeatmapState.stopHeatmapSliding();
+            HeatmapState.heatmapSlidingSec = 5
+            HeatmapState.startHeatmapSliding();
+
+        }else if(HeatmapState.heatmapSlidingSec == 5){
+            $("#btnHeatmapSlider").text("10")
+            HeatmapState.stopHeatmapSliding();
+            HeatmapState.heatmapSlidingSec = 10
+            HeatmapState.startHeatmapSliding();
+        }else if(HeatmapState.heatmapSlidingSec == 10){
+            $("#btnHeatmapSlider").text("30")
+            HeatmapState.stopHeatmapSliding();
+            HeatmapState.heatmapSlidingSec = 30
+            HeatmapState.startHeatmapSliding();
+        }else if(HeatmapState.heatmapSlidingSec == 30){
+            $("#btnHeatmapSlider").text("60")
+            HeatmapState.stopHeatmapSliding();
+            HeatmapState.heatmapSlidingSec = 60
+            HeatmapState.startHeatmapSliding();
+        }else if(HeatmapState.heatmapSlidingSec == 60){
+            $("#btnHeatmapSlider").text("5m")
+            HeatmapState.stopHeatmapSliding();
+            HeatmapState.heatmapSlidingSec = 300
+            HeatmapState.startHeatmapSliding();
+        }else if(HeatmapState.heatmapSlidingSec == 300){
+            $("#btnHeatmapSlider").text("15m")
+            HeatmapState.stopHeatmapSliding();
+            HeatmapState.heatmapSlidingSec = 900
+            HeatmapState.startHeatmapSliding();
+        }else if(HeatmapState.heatmapSlidingSec == 900){
+            $("#btnHeatmapSlider").text("30m")
+            HeatmapState.stopHeatmapSliding();
+            HeatmapState.heatmapSlidingSec = 1800
+            HeatmapState.startHeatmapSliding();
+        }else{
+            $("#btnHeatmapSlider").text("0")
+            HeatmapState.stopHeatmapSliding();
+            HeatmapState.heatmapSlidingSec = null
+        }
+
+    });
+    // 다음 버튼
     $(document).on("click", "#btnHeatmapNext", function () {
         HeatmapState.next();
     });
@@ -211,6 +257,5 @@ $(function () {
         // 새로고침
         loadHeatmapViewerService();
     });
-
     
 });

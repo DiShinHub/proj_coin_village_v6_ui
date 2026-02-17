@@ -276,8 +276,7 @@ function renderContentCvHeatmaps(x) {
         $("#heatmapContainer").html("<p>등록된 히트맵이 없습니다.</p>");
         return;
     }
-
-    HeatmapState.render(); // ← 여기 하나로 끝
+    HeatmapState.render(); 
 }
 
 function renderHeatmapContent(item) {
@@ -313,37 +312,6 @@ function renderHeatmapContent(item) {
     html += `</div>`;
     $("#heatmapContainer").html(html);
 }
-// function renderHeatmapViewer(item) {
-
-//     const split = item.split_type;
-//     const boxes = getSplitBoxCount(split);
-//     const urls = item.urls || [];
-
-//     let html = `<div class="heatmap-view-grid split-${split}">`;
-
-//     for (let i = 0; i < boxes; i++) {
-//         const url = urls[i] || "";
-
-//         html += `
-//         <div class="heatmap-box" data-box-idx="${i}">
-//             <img 
-//                 class="heatmap-img"
-//                 src="${url}"
-//             />
-//             <div class="heatmap-url-input">
-//                 <input 
-//                     type="text"
-//                     value="${url}"
-//                     placeholder="iframe URL 입력"
-//                 />
-//                 <button class="save-url-btn">저장</button>
-//             </div>
-//         </div>
-//         `;
-//     }
-//     html += `</div>`;
-//     $("#heatmapContainer").html(html);
-// }
 
 function getSplitBoxCount(split) {
     switch (split) {

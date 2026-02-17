@@ -67,5 +67,7 @@ $(function () {
         page = $(this).data("page");
         value = $(this).data("value");
         loadPage(page, value);
+        
+        PageState.setPage(value);
     });
 });
