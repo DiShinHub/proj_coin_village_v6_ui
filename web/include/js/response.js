@@ -2,11 +2,12 @@
 eel.expose(passage_js);
 function passage_js(x) {
     try {
+        /*cv services board*/
         if(x.request.service_div == "00"){
-            rendercontentCvServices(x);
+            CvServiceState.handleResponseLoad(x)
         }
         else if(x.request.service_div == "01"){
-            rendercontentCvServices(x);
+            CvServiceState.handleResponseLoad(x)
         }
         else if(x.request.service_div == "02"){
             if (x.response.result == true){
@@ -22,9 +23,9 @@ function passage_js(x) {
                 alert("변경에 실패 하였습니다. ")
             }
         }
+        /*heatmaps*/
         else if(x.request.service_div == "04"){
-            renderContentCvHeatmaps(x);
-            
+            HeatmapState.handleResponseLoad(x);
         }
         else if(x.request.service_div == "05"){
             if (x.response.result == true){

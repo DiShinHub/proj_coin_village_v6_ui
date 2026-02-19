@@ -2,7 +2,7 @@ $(function () {
     
     // 새로고침 버튼
     $(document).on("click", "#btnRefreshCvServices", function () {
-        loadRunnableService();
+        CvServiceState.loadCvServices();
     });
 
     // 서비스 추가용 카드 생성
@@ -12,9 +12,19 @@ $(function () {
             alert("이미 추가 중인 서비스가 있습니다.");
             return;
         }
-    
-        const item = getEmptyServiceItem();
-        const html = createCard(item);
+
+        const item = {
+            seq: null,
+            activate_yn: "N",
+            product_name: "",
+            product_desc: "",
+            execution_method: "run",
+            service_options: {},
+            interval_options: {},
+            schedule_options: {}
+        };
+
+        const html = CvServiceState.renderCard(item);
     
         $("#contentCvServices").prepend(html);
     });
@@ -26,11 +36,22 @@ $(function () {
         const current = $badge.data("active");
         const nextActive = current === "Y" ? "N" : "Y";
 
-        updateBadgeUI($badge, nextActive);
-        OnOffRunnableService(seq, nextActive);
+        $badge
+            .data("active", activeYn)
+            .toggleClass("on", activeYn === "Y")
+            .toggleClass("off", activeYn === "N")
+            .text(activeYn === "Y" ? "ACTIVE" : "INACTIVE");
+            
+        //
+        var input_json = {
+            service_div: "01",
+            seq: seq,
+            activate_yn: nextActive
+        };
+        eel.send(input_json);
         
         setTimeout(() => {
-            loadRunnableService();
+            CvServiceState.loadCvServices();
         }, 1500);
     });
 
@@ -79,24 +100,29 @@ $(function () {
             const productName = $card.find(".product-name-input").val();
             const productDesc = $card.find(".product-desc-input").val();
     
-            createRunnableService(
-                productName,
-                productDesc,
-                executionMethod,
-                serviceOption,
-                JSON.stringify(interval_options),
-                JSON.stringify(schedule_options)
-            );
-    
+            var input_json = {
+                service_div: "02",
+                product_name: productName,
+                product_desc: productDesc,
+                execution_method: executionMethod,
+                service_options: serviceOption,
+                interval_options: JSON.stringify(interval_options),
+                schedule_options: JSON.stringify(schedule_options)
+            };
+            eel.send(input_json);
+
         } else {
-            // 기존 업데이트
-            updateRunnableService(
-                seq,
-                executionMethod,
-                serviceOption,
-                JSON.stringify(interval_options),
-                JSON.stringify(schedule_options)
-            );
+            // 업데이트
+            var input_json = {
+                service_div: "03",
+                seq: seq,
+                execution_method: executionMethod,
+                service_options: serviceOption,
+                interval_options: JSON.stringify(interval_options),
+                schedule_options: JSON.stringify(schedule_options)
+            };
+            eel.send(input_json);
+
         }
     });
 });

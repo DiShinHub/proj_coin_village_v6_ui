@@ -6,19 +6,30 @@ window.PageState = {
 
     init() {
         this.page = "0"
-        this.resetIntervals();
+        this.clearIntervals();
     },
-    setPage(page) {
-        this.page = page
-        this.resetIntervals();
-        if (page == 0) {
-            this.startHeatmapInterval();
-        } 
-        else if (page == 1) {
-            this.startHeatmapInterval();
-        } 
+    loadPage(page, value) {
+        this.clearIntervals();
+        
+        $("#contentArea").load(`./pages/${page}.html`, function (response, status) {
+            if (status === "error") {
+                $("#contentArea").html("<p>페이지를 불러오지 못했습니다.</p>");
+            }
+            CvServiceState.clear();
+            HeatmapState.clear();
+
+            if (value == "0"){
+                CvServiceState.load();
+                this.startCvInterval();
+            }
+            else if (value == "1"){
+                HeatmapState.load();
+                this.startHeatmapInterval();
+            }
+        });
     },
-    resetIntervals() {
+    /* Clear all Intervals */
+    clearIntervals() {
         this.stopCvInterval();
         this.stopHeatmapInterval();
     },
@@ -27,7 +38,7 @@ window.PageState = {
         let min = 15
         if (this.cvServiceInterval) return; 
         this.cvServiceInterval = setInterval(() => {
-            loadRunnableService();
+            CvServiceState.loadCvServices();
         }, min*60*1000);
     },
     stopCvInterval() {
@@ -41,7 +52,7 @@ window.PageState = {
         let min = 15
         if (this.heatmapInterval) return; 
         this.heatmapInterval = setInterval(() => {
-            loadHeatmapViewerService();
+            HeatmapState.loadHeatmaps();
         }, min*60*1000);
     },
     stopHeatmapInterval() {

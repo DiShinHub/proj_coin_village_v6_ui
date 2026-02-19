@@ -1,18 +1,23 @@
 $(function () {
+
+    // 새로고침
+    $(document).on("click", "#btnRefreshCvHeatmaps", function () {
+        HeatmapState.loadHeatmaps();
+    });
     
     // 히트맵 추가 팝업 열기
     $(document).on("click", "#btnAddHeatmap", function () {
-        resetHeatmapAddModal();
+        HeatmapState.setHeatmapAddModal(heatmapTitle="", heatmapDesc="", heatmapSplit="1");
         $("#heatmapAddModal").fadeIn(150);
     });
 
-    // 닫기
+    // 히트맵 추가 닫기
     $(document).on("click", "#btnCloseHeatmapModal", function () {
-        resetHeatmapAddModal();
+        HeatmapState.setHeatmapAddModal(heatmapTitle="", heatmapDesc="", heatmapSplit="1");
         $("#heatmapAddModal").fadeOut(150);
     });
 
-    // 저장
+    // 히트맵 추가 저장
     $(document).on("click", "#btnSaveHeatmap", function () {
         const title = $("#heatmapTitle").val();
         const desc  = $("#heatmapDesc").val();
@@ -22,77 +27,71 @@ $(function () {
             alert("타이틀을 입력해주세요.");
             return;
         }
-
         eel.send({
-            service_div: "05",   // 👉 히트맵 추가용
+            service_div: "05",
             title: title,
             desc: desc,
             split: split
         });
         $("#heatmapAddModal").fadeOut(150);
 
-        loadHeatmapViewerService();
-    });
-
-    // 새로고침
-    $(document).on("click", "#btnRefreshCvHeatmaps", function () {
-        loadHeatmapViewerService();
-    });
-
-    // 이전 버튼
-    $(document).on("click", "#btnHeatmapPrev", function () {
-        HeatmapState.prev();
+        HeatmapState.loadHeatmaps();
     });
 
     // 오토 슬라이더 
     $(document).on("click", "#btnHeatmapSlider", function () {
+        
+        HeatmapState.stopAutoSliding();
 
         if (HeatmapState.heatmapSlidingSec == null){
             $("#btnHeatmapSlider").text("5")
-            HeatmapState.stopHeatmapSliding();
-            HeatmapState.heatmapSlidingSec = 5
-            HeatmapState.startHeatmapSliding();
+            HeatmapState.heatmapSlidingSec = 5;
+            HeatmapState.startAutoSliding();
 
         }else if(HeatmapState.heatmapSlidingSec == 5){
             $("#btnHeatmapSlider").text("10")
-            HeatmapState.stopHeatmapSliding();
-            HeatmapState.heatmapSlidingSec = 10
-            HeatmapState.startHeatmapSliding();
+            HeatmapState.heatmapSlidingSec = 10;
+            HeatmapState.startAutoSliding();
+
         }else if(HeatmapState.heatmapSlidingSec == 10){
             $("#btnHeatmapSlider").text("30")
-            HeatmapState.stopHeatmapSliding();
-            HeatmapState.heatmapSlidingSec = 30
-            HeatmapState.startHeatmapSliding();
+            HeatmapState.heatmapSlidingSec = 30;
+            HeatmapState.startAutoSliding();
+
         }else if(HeatmapState.heatmapSlidingSec == 30){
             $("#btnHeatmapSlider").text("60")
-            HeatmapState.stopHeatmapSliding();
-            HeatmapState.heatmapSlidingSec = 60
-            HeatmapState.startHeatmapSliding();
+            HeatmapState.heatmapSlidingSec = 60;
+            HeatmapState.startAutoSliding();
+
         }else if(HeatmapState.heatmapSlidingSec == 60){
             $("#btnHeatmapSlider").text("5m")
-            HeatmapState.stopHeatmapSliding();
-            HeatmapState.heatmapSlidingSec = 300
-            HeatmapState.startHeatmapSliding();
+            HeatmapState.heatmapSlidingSec = 300;
+            HeatmapState.startAutoSliding();
+
         }else if(HeatmapState.heatmapSlidingSec == 300){
             $("#btnHeatmapSlider").text("15m")
-            HeatmapState.stopHeatmapSliding();
-            HeatmapState.heatmapSlidingSec = 900
-            HeatmapState.startHeatmapSliding();
+            HeatmapState.heatmapSlidingSec = 900;
+            HeatmapState.startAutoSliding();
+
         }else if(HeatmapState.heatmapSlidingSec == 900){
             $("#btnHeatmapSlider").text("30m")
-            HeatmapState.stopHeatmapSliding();
-            HeatmapState.heatmapSlidingSec = 1800
-            HeatmapState.startHeatmapSliding();
+            HeatmapState.heatmapSlidingSec = 1800;
+            HeatmapState.startAutoSliding();
+
         }else{
             $("#btnHeatmapSlider").text("0")
-            HeatmapState.stopHeatmapSliding();
-            HeatmapState.heatmapSlidingSec = null
+            HeatmapState.heatmapSlidingSec = null;
         }
     });
     
-    // 다음 버튼
+    // 슬라이더 다음 버튼
     $(document).on("click", "#btnHeatmapNext", function () {
-        HeatmapState.next();
+        HeatmapState.nextSlide();
+    });
+
+    // 슬라이더 이전 버튼
+    $(document).on("click", "#btnHeatmapPrev", function () {
+        HeatmapState.prevSlide();
     });
 
     // 입력창 토글
@@ -106,11 +105,11 @@ $(function () {
         );
     
         $(this).text(
-            isHeatmapUrlVisible ? "URL 입력 숨기기" : "URL 입력 보이기"
+            isHeatmapUrlVisible ? "URL 입력 OFF" : "URL 입력 ON"
         );
     });
 
-    // 보고있는 페이지 url 업데이트
+    // 현재 페이지 url 업데이트
     $(document).on("click", "#btnUpdateHeatmapUrl", function () {
 
         const $grid = $("#heatmapContainer .heatmap-view-grid");
@@ -135,10 +134,10 @@ $(function () {
         });
 
         // 새로고침
-        loadHeatmapViewerService();
+        HeatmapState.load();
     });
 
-    // 보고있는 페이지 히트맵 삭제
+    // 현재 페이지 히트맵 삭제
     $(document).on("click", "#btnDelHeatmap", function () {
 
         const $grid = $("#heatmapContainer .heatmap-view-grid");
@@ -152,7 +151,7 @@ $(function () {
         });
 
         // 새로고침
-        loadHeatmapViewerService();
+        HeatmapState.load();
     });
     
 });
