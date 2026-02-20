@@ -19,12 +19,12 @@ window.PageState = {
             HeatmapState.clear();
 
             if (value == "0"){
-                CvServiceState.load();
-                this.startCvInterval();
+                CvServiceState.loadCvServices();
+                PageState.startCvInterval();
             }
             else if (value == "1"){
-                HeatmapState.load();
-                this.startHeatmapInterval();
+                HeatmapState.loadHeatmaps();
+                PageState.startHeatmapInterval();
             }
         });
     },

@@ -134,7 +134,7 @@ $(function () {
         });
 
         // 새로고침
-        HeatmapState.load();
+        HeatmapState.loadHeatmaps();
     });
 
     // 현재 페이지 히트맵 삭제
@@ -151,7 +151,7 @@ $(function () {
         });
 
         // 새로고침
-        HeatmapState.load();
+        HeatmapState.loadHeatmaps();
     });
     
 });

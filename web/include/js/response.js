@@ -7,7 +7,7 @@ function passage_js(x) {
             CvServiceState.handleResponseLoad(x)
         }
         else if(x.request.service_div == "01"){
-            CvServiceState.handleResponseLoad(x)
+            CvServiceState.loadCvServices(x)
         }
         else if(x.request.service_div == "02"){
             if (x.response.result == true){

@@ -17,7 +17,7 @@ window.CvServiceState = {
     handleResponseLoad(x){
         let html = "";
         x.response.data.runnable_services.forEach(item => {
-            html += renderCard(item);
+            html += this.renderCard(item);
         });
         $("#contentCvServices").html(html);
     },
@@ -86,13 +86,13 @@ window.CvServiceState = {
                         <div class="option-item">
                             <div class="option-title">Interval Option</div>
                             <div class="option-fields">
-                                ${renderOptionInputs(item.interval_options, "interval")}
+                                ${this.renderOptionInputs(item.interval_options, "interval")}
                             </div>
                         </div>
                         <div class="option-item">
                             <div class="option-title">Schedule Option</div>
                             <div class="option-fields">
-                                ${renderOptionInputs(item.schedule_options, "schedule")}
+                                ${this.renderOptionInputs(item.schedule_options, "schedule")}
                             </div>
                         </div>
                     </div>

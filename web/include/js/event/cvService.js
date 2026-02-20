@@ -37,10 +37,10 @@ $(function () {
         const nextActive = current === "Y" ? "N" : "Y";
 
         $badge
-            .data("active", activeYn)
-            .toggleClass("on", activeYn === "Y")
-            .toggleClass("off", activeYn === "N")
-            .text(activeYn === "Y" ? "ACTIVE" : "INACTIVE");
+            .data("active", nextActive)
+            .toggleClass("on", nextActive === "Y")
+            .toggleClass("off", nextActive === "N")
+            .text(nextActive === "Y" ? "ACTIVE" : "INACTIVE");
             
         //
         var input_json = {
